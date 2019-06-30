@@ -1,0 +1,134 @@
+{% extends 'blog/base.html' %}
+{% block content %}
+
+{% load staticfiles %}
+<!DOCTYPE html>
+<head>
+	<title>글쓰기</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+<!--===============================================================================================-->
+	<link rel="icon" type="image/png" href="{% static 'blog/images/icons/favicon.ico'%}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'vendor/bootstrap/css/bootstrap.min.css'%}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'fonts/font-awesome-4.7.0/css/font-awesome.min.css'%}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'fonts/Linearicons-Free-v1.0.0/icon-font.min.css'%}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'vendor/animate/animate.css'%}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'vendor/css-hamburgers/hamburgers.min.css'%}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'vendor/animsition/css/animsition.min.css'%}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'vendor/select2/select2.min.css'%}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'vendor/daterangepicker/daterangepicker.css'%}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'css/util.css'%}">
+	<link rel="stylesheet" type="text/css" href="{% static 'css/main.css'%}">
+<!--===============================================================================================-->
+    <style>
+        body {
+        background-image: url("{% static 'images/yonsei.jpg' %}");
+        background-size: cover;
+
+        background-position: center center;
+        }
+        .contact100-form-title {
+            background-image: url("{% static 'images/bg-01.jpg' %}")
+        }
+    </style>
+</head>
+<body>
+
+
+	<div class="container-contact100">
+
+		<div class="wrap-contact100">
+			<div class="contact100-form-title">
+				<span class="contact100-form-title-1">
+					글 수정
+				</span>
+
+				<span class="contact100-form-title-2">
+					수정 사항을 반영해 주세요. :-)
+				</span>
+			</div>
+            <form class = "contact100-form validate-form" action="{%url 'edit' %}" method="POST" enctype="multipart/form-data">{% csrf_token %}                
+                
+                <div class="wrap-input100 validate-input" data-validate="제목을 작성해주세요">
+                    <span class="label-input100">칭찬 제목:</span>
+                    <input class="input100" type="text" name="title" value=post.title >
+                    <span class="focus-input100"></span>
+                </div>
+                           
+                <div class="wrap-input100 validate-input" data-validate="습득 날짜를 입력해주세요!">
+                    <span class="label-input100">칭찬일기 날짜: </span>
+                    <input class="input100" type="date" name="found_date" default={{post.diary_date}}>
+                    <span class="focus-input100"></span>
+                </div>
+            
+                <div class="wrap-input100 validate-input" data-validate="내용을 입력해주세요!">
+                        <span class="label-input100">칭찬 내용:</span>
+                        <textarea class="input100" name="content" default={{post.content}}></textarea>
+                        <span class="focus-input100"></span>
+                </div>
+                
+                
+				<div class="container-contact100-form-btn">
+					<!-- <button class="contact100-form-btn" type="submit">
+						<span>
+							Submit
+							<i class="fa fa-long-arrow-right m-l-7" aria-hidden="true"></i>
+						</span>
+                    </button> -->
+                    <input type="submit" class="contact100-form-btn" value='Edit!'>
+                </div>
+                
+                <div class="container mt-5">
+                    <a href="{% url 'posthome' %}" align="middle">홈으로 돌아가기</a>
+                </div>
+                
+            </form>
+            
+		</div>
+	</div>
+
+
+
+	<div id="dropDownSelect1"></div>
+
+<!--===============================================================================================-->
+	<script src="{% static 'vendor/jquery/jquery-3.2.1.min.js'%}"></script>
+<!--===============================================================================================-->
+	<script src="{% static 'vendor/animsition/js/animsition.min.js'%}"></script>
+<!--===============================================================================================-->
+	<script src="{% static 'vendor/bootstrap/js/popper.js'%}"></script>
+	<script src="{% static 'vendor/bootstrap/js/bootstrap.min.js'%}"></script>
+<!--===============================================================================================-->
+	<script src="{% static 'vendor/select2/select2.min.js'%}"></script>
+<!--===============================================================================================-->
+	<script src="{% static 'vendor/daterangepicker/moment.min.js'%}"></script>
+	<script src="{% static 'vendor/daterangepicker/daterangepicker.js'%}"></script>
+<!--===============================================================================================-->
+	<script src="{% static 'vendor/countdowntime/countdowntime.js'%}"></script>
+<!--===============================================================================================-->
+	<!-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAKFWBqlKAGCeS1rMVoaNlwyayu0e0YRes"></script>
+    <script src="{% static 'js/map-custom.js'%}"></script> -->
+<!--===============================================================================================-->
+	<script src="{% static 'js/main.js'%}"></script>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-23581568-13"></script>
+	<script>
+	  window.dataLayer = window.dataLayer || [];
+	  function gtag(){dataLayer.push(arguments);}
+	  gtag('js', new Date());
+
+	  gtag('config', 'UA-23581568-13');
+	</script>
+
+</body>
+</html>
+{% endblock %}

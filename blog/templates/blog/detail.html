@@ -1,0 +1,128 @@
+{% extends 'blog/base.html' %}
+{% block contents %}
+
+
+{% load staticfiles %}
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+<head>
+
+    <!--- basic page needs
+    ================================================== -->
+    <meta charset="utf-8">
+    <title>고래고래</title>
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- mobile specific metas
+    ================================================== -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <!-- CSS
+    ================================================== -->
+    <link rel="stylesheet" href="{% static 'board/css/base.css' %}">
+    <link rel="stylesheet" href="{% static 'board/css/vendor.css' %}">
+    <link rel="stylesheet" href="{% static 'board/css/main.css' %}">
+
+    <!-- script
+    ================================================== -->
+    <script src="{% static 'board/js/modernizr.js' %}"></script>
+    <script src="{% static 'board/js/pace.min.js' %}"></script>
+
+    <!-- favicons
+    ================================================== -->
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+
+</head>
+
+    <!-- s-content
+    ================================================== -->
+    <section class="s-content">
+        
+        <div class="row masonry-wrap">
+            <div class="masonry">
+
+                <div class="grid-sizer"></div>
+
+                
+                <article class="masonry__brick entry format-standard" data-aos="fade-up">
+                        {% if is_written %}
+                        <a href = "{% url 'edit' post_id=post.pk %}">수정</a>
+                        {% else %}
+                        <a href = "{% url 'new' %}">새로 작성</a>
+                        <h1>{{post.content}}</h1>
+                        {% endif %}
+                    <div class="entry__text">
+                        <div class="entry__header">
+                            {{post.author}}
+                            <div class="entry__date">
+                                <a href="{% static 'board/single-standard.html' %}">{{post.created_at}}</a>
+                            </div>
+                            <h1 class="entry__title"><a href="{% static 'board/single-standard.html' %}">{{post.title}}</a></h1>
+                            
+                        </div>
+                        <div class="entry__excerpt">
+                            <p>
+                                {{post.content}}
+                            </p>
+                        </div>
+                    </div>
+    
+                </article> <!-- end article -->
+              
+            </div> <!-- end masonry -->
+        </div> <!-- end masonry-wrap -->
+
+        <!-- <div class="row"> 
+            <div class="col-full">
+                <nav class="pgn">
+                    <ul>
+                        <li><a class="pgn__prev" href="#0">Prev</a></li>
+                        <li><a class="pgn__num" href="#0">1</a></li>
+                        <li><span class="pgn__num current">2</span></li>
+                        <li><a class="pgn__num" href="#0">3</a></li>
+                        <li><a class="pgn__num" href="#0">4</a></li>
+                        <li><a class="pgn__num" href="#0">5</a></li>
+                        <li><span class="pgn__num dots">…</span></li>
+                        <li><a class="pgn__num" href="#0">8</a></li>
+                        <li><a class="pgn__next" href="#0">Next</a></li>
+    ================================================== -->
+    <footer class="s-footer">
+
+        <div class="s-footer__bottom">
+            <div class="row">
+                <div class="col-full">
+                    <div class="s-footer__copyright">
+                        <span>© Copyright 고래고래 2019</span> 
+        </div> <!-- end s-footer__bottom -->
+
+    </footer> <!-- end s-footer -->
+
+
+    <!-- preloader
+    ================================================== -->
+    <div id="preloader">
+        <div id="loader">
+            <div class="line-scale">
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Java Script
+    ================================================== -->
+    <script src="{% static 'board/js/jquery-3.2.1.min.js' %}"></script>
+    <script src="{% static 'board/js/plugins.js' %}"></script>
+    <script src="{% static 'board/js/main.js' %}"></script>
+
+</body>
+
+</html>
+
+{% endblock %}
